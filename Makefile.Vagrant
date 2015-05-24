@@ -1,0 +1,69 @@
+##
+# Vagrant makefile
+# description     : Helper to create virtualised guest and build libraries
+# author          : Almir Kadric
+# created on      : 2014-10-29
+##
+
+
+
+##
+# Global variables
+##
+
+# Set default shell
+SHELL = /bin/bash
+
+
+
+###
+# Vagrant build targets
+###
+.PHONY: build-Linux build-Android build-MacOSX build-Windows
+
+#
+build-Android:
+	vagrant up linux
+	vagrant ssh linux -c "cd /vagrant && make build-all PLATFORM=Android"
+
+#
+build-Linux:
+	vagrant up linux
+	vagrant ssh linux -c "cd /vagrant && make build-all"
+
+#
+#build-MacOSX:
+#	vagrant up macosx
+#	vagrant ssh macosx -c "cd /vagrant && make build-all"
+
+#
+#build-Windows:
+#	vagrant up windows
+#	vagrant ssh windows -c "cd /vagrant && make build-all"
+
+
+
+###
+# Vagrant test targets
+###
+.PHONY: test-Linux test-Android test-MacOSX test-Windows
+
+#
+#test-Android:
+#	vagrant up linux
+#	vagrant ssh linux -c "cd /vagrant && make build-all PLATFORM=Android"
+
+#
+test-Linux:
+	vagrant up linux
+	vagrant ssh linux -c "cd /vagrant && make test-helloworld"
+
+#
+#test-MacOSX:
+#	vagrant up macosx
+#	vagrant ssh macosx -c "cd /vagrant && make build-all"
+
+#
+#test-Windows:
+#	vagrant up windows
+#	vagrant ssh windows -c "cd /vagrant && make build-all"

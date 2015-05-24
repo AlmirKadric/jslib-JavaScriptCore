@@ -1,0 +1,26 @@
+##
+# JavaScriptCore MacOSX makefile
+# description     : MacOSX library builder for JavaScriptCore
+# author          : Almir Kadric
+# created on      : 2014-10-29
+##
+
+
+
+##
+# Make Targets
+##
+
+# List of target which should be run every time without caching
+.PHONY: help clean clean-deps clean-all
+
+# Default make target
+%:: Default
+build: Default
+build-all: Default
+Default:
+	@echo ""
+	@echo "JavaScriptCore cannot be built on MacOSX. However JavaScriptCore is already"
+	@echo "available on MacOSX as a Framework. Please use the Framework instead. For "
+	@echo "usage example, please check the tests directory."
+	@echo ""
